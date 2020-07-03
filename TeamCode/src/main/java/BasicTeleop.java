@@ -25,10 +25,32 @@ public class BasicTeleop extends OpMode {
 //     rbDrive.setPower(0.3);
 double rightPower = gamepad1.right_stick_y;
 double leftPower = gamepad1.left_stick_y;
-lbDrive.setPower(leftPower);
-lfDrive.setPower(leftPower);
-rfDrive.setPower(rightPower);
-rbDrive.setPower(rightPower);
+boolean rightStrafe = gamepad1.right_bumper;
+boolean leftStrafe = gamepad1.left_bumper;
+
+
+
+if(leftStrafe){
+   lbDrive.setPower(-1);
+    lfDrive.setPower(1);
+    rfDrive. setPower(-1);
+    rbDrive.setPower(1);
+
+}
+else if (rightStrafe){
+    lbDrive.setPower(1);
+    lfDrive.setPower(-1);
+     rfDrive.setPower(1);
+    rbDrive.setPower(-1);
+
+}
+else{
+    lbDrive.setPower(leftPower);
+    lfDrive.setPower(leftPower);
+    rfDrive.setPower(rightPower);
+    rbDrive.setPower(rightPower);
+
+}
 
 
     }
