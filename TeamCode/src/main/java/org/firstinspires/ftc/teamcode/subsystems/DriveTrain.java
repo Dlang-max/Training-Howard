@@ -23,12 +23,35 @@ public class DriveTrain extends Subsystem {
         lbDrive.setPower(leftPower);
         lfDrive.setPower(leftPower);
 
-        rfDrive.setPower(rightPower);
-        rbDrive.setPower(rightPower);
+        rfDrive.setPower(-rightPower);
+        rbDrive.setPower(-rightPower);
     }
+    public void strafeRight(boolean strafeRight) {
+        if (strafeRight) {
+            lbDrive.setPower(1);
+            lfDrive.setPower(-1);
+
+            rfDrive.setPower(-1);
+            rbDrive.setPower(1);
+        }
+    }
+    public void strafeLeft(boolean strafeLeft){
+        if(strafeLeft){
+            lbDrive.setPower(-1);
+            lfDrive.setPower(1);
+
+            rfDrive.setPower(1);
+            rbDrive.setPower(-1);
+        }
+    }
+
+
+
 
     public void tankDrive(){
         move(Robot.g1.left_stick_y, Robot.g1.right_stick_y);
+        strafeRight(Robot.g1.right_bumper);
+        strafeLeft(Robot.g1.left_bumper);
     }
 
     @Override
